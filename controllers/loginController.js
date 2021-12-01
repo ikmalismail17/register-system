@@ -80,10 +80,15 @@ const loginStudent = (req, res) => {
   }
 };
 
+const logOutView = (req,res) => {
+  res.render("register", {});
+}
+
 module.exports =  {
     registerView,
     loginView,
     registerStudent,
     loginStudent,
-    indexView
+    indexView,
+    logOutView
 };

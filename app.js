@@ -4,7 +4,7 @@ const route = require('./routes/login');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const passport = require('passport');
-const loginCheck = require('./auth/passport');
+const {loginCheck} = require('./auth/passport');
 loginCheck(passport);
 
 //init app
