@@ -12,10 +12,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
- location: {     
-   type: String,    
-   default: "Malaysia",
-   },
   date: {
     type: Date,
     default: Date.now,

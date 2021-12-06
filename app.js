@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const route = require('./routes/login');
+const routeUser = require('./routes/userpage');
+const routeAdmin = require('./routes/adminpage');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const passport = require('passport');
@@ -38,13 +40,17 @@ app.use(passport.session());
 
 //load from routes file
 app.use('/', route);
+app.use('/', routeAdmin);
+app.use('/', routeUser);
+
+
 
 app.get('/', (req,res) => {
     res.render('index');
 });
 
 //run server
-app.listen(3000, '0.0.0.0',function () {
+app.listen(3000, '0.0.0.0',() => {
     console.log("Server start on port 3000");
 });
 
