@@ -81,7 +81,8 @@ const loginStudent = (req, res) => {
 };
 
 const logOutView = (req,res) => {
-  res.render("register", {});
+  req.logout();
+  res.redirect('/');
 }
 
 module.exports =  {
