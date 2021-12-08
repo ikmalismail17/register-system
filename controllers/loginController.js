@@ -13,7 +13,7 @@ const indexView = (req,res) => {
 
 //Post Request that handles Register
 const registerStudent = (req, res) => {
-    const { name, email, location, password, confirm } = req.body;
+    const { name, email, password, confirm } = req.body;
     if (!name || !email || !password || !confirm) {
       console.log("Fill empty fields");
     }
@@ -36,7 +36,6 @@ const registerStudent = (req, res) => {
           const newUser = new User({
             name,
             email,
-            location,
             password,
           });
           //Password Hashing
