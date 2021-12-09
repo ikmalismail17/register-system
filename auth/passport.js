@@ -36,6 +36,11 @@ const loginCheck = passport => {
     });
   });
 };
+
+const adminCheck = passport => {
+  
+}
 module.exports = {
   loginCheck,
+  adminCheck
 };
