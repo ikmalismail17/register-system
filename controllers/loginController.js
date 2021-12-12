@@ -91,12 +91,12 @@ const loginAdmin = (req, res) => {
 
   if (!name || !password) {
     console.log("Please fill in all the fields");
-    res.render("adminlogin", {
+    res.redirect("/adminlogin", {
       name,
       password,
     });
   } else {
-    passport.authenticate("local", {
+    passport.authenticate("local2", {
       successRedirect: "/admindashboard",
       failureRedirect: "/adminlogin",
       failureFlash: true,

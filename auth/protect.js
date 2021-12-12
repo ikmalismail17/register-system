@@ -1,33 +1,33 @@
-const protectRoute = (req, res, next) =>{
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    console.log('Please log in to continue');
-    res.redirect('/login');
+const protectRoute = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
   }
-  const allowIf = (req, res, next) =>{
-    if (!req.isAuthenticated()) {
-      return next();
-    }
-    res.redirect('/dashboard');      
+  console.log("Please log in to continue");
+  res.redirect("/login");
+};
+const allowIf = (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return next();
   }
+  res.redirect("/dashboard");
+};
 
-const protectAdminRoute = (req,res,next)=>{
-  if(req.isAuthenticated()){
+const protectAdminRoute = (req, res, next) => {
+  if (req.isAuthenticated()) {
     return next();
   }
-  console.log("Please log in to continue")
-  res.redirect('/adminlogin');
-}
-const allow = (req,res,next)=>{
-  if(!req.isAuthenticated()){
+  console.log("Please log in to continue");
+  res.redirect("/adminlogin");
+};
+const allow = (req, res, next) => {
+  if (!req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/admindashboard');
-}
-  module.exports = {
-      protectRoute,
-      protectAdminRoute,
-      allow,
-      allowIf,
-    };
+  res.redirect("/admindashboard");
+};
+module.exports = {
+  protectRoute,
+  protectAdminRoute,
+  allow,
+  allowIf,
+};
