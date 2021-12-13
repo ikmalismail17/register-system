@@ -3,7 +3,8 @@ const bcrypt = require("bcryptjs");
 LocalStrategy = require("passport-local").Strategy;
 //Load model
 const User = require("../models/student");
-const loginCheck = passport => {
+const Admin = require("../models/admin");
+const loginCheck = (passport) => {
   passport.use(
     new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
       //Check customer
@@ -37,10 +38,40 @@ const loginCheck = passport => {
   });
 };
 
-const adminCheck = passport => {
-  
-}
+const adminCheck = (passport) => {
+  passport.use(
+    new LocalStrategy({ usernameField: "name" }, (name, password, done) => {
+      //Check customer
+      Admin.findOne({ name: name })
+        .then((admin) => {
+          if (!admin) {
+            console.log("wrong name");
+            return done();
+          }
+          //Match Password
+          bcrypt.compare(password, admin.password, (error, isMatch) => {
+            if (error) throw error;
+            if (isMatch) {
+              return done(null, admin);
+            } else {
+              console.log("Wrong password");
+              return done();
+            }
+          });
+        })
+        .catch((error) => console.log(error));
+    })
+  );
+  passport.serializeUser((admin, done) => {
+    done(null, admin.id);
+  });
+  passport.deserializeUser((id, done) => {
+    User.findById(id, (error, admin) => {
+      done(error, admin);
+    });
+  });
+};
 module.exports = {
   loginCheck,
-  adminCheck
+  adminCheck,
 };
