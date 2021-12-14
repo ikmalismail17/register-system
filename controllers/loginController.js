@@ -88,15 +88,17 @@ const adminLogin = (req, res) => {
 
 const loginAdmin = (req, res) => {
   const { name, password } = req.body;
-
   if (!name || !password) {
     console.log("Please fill in all the fields");
-    res.redirect("/adminlogin", {
-      name,
-      password,
-    });
+    res.redirect(
+      {
+        name,
+        password,
+      },
+      "/adminlogin"
+    );
   } else {
-    passport.authenticate("local2", {
+    passport.authenticate("local", {
       successRedirect: "/admindashboard",
       failureRedirect: "/adminlogin",
       failureFlash: true,
