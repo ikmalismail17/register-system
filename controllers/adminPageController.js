@@ -80,10 +80,17 @@ const registerAdmin = (req, res) => {
   res.render("adminreg");
 };
 
+const editCourse = (req, res) => {
+  Course.findOne({ _id: req.params.id }, (err, data) => {
+    res.json();
+  });
+};
+
 module.exports = {
   registerView,
   registerCourse,
   deleteCourse,
   registerAdmin,
   registerAd,
+  editCourse,
 };

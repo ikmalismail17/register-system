@@ -20,10 +20,10 @@ const {
 router.get("/register", registerView);
 router.get("/login", loginView);
 router.get("/index", indexView);
-router.get("/dashboard", protectRoute, dashboardView);
+router.get("/dashboard", dashboardView);
 router.get("/logout", logOutView);
 router.get("/adminlogin", adminLogin);
-router.get("/admindashboard", protectAdminRoute, adminDashboard);
+router.get("/admindashboard", adminDashboard);
 
 //post
 router.post("/register", registerStudent);

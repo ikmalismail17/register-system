@@ -15,7 +15,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="coursename" id="name" />
+                                    <input type="text" class="form-control" name="coursename" id="name" value="<%= edit.name %> " />
                                 </div>
                             </div>
                         </div>
@@ -24,7 +24,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="coursecode" id="email" />
+                                    <input type="text" class="form-control" name="coursecode" id="email" value="<%= edit.code %> " />
                                 </div>
                             </div>
                         </div>
@@ -33,10 +33,11 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="number" class="form-control" name="duration" id="email" />
+                                    <input type="text" class="form-control" name="duration" id="email" value="<%= edit.duration %> " />
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group mt-2 ">
                             <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                         </div>
@@ -65,7 +66,7 @@
                     <td><%= courses.code %></td>
                     <td><%= courses.duration %></td>
                     <td>
-                        <a href="" class="btn btn-warning">Edit</a>
+                        <a href="/edit/<%- courses._id %>" class="btn btn-warning">Edit</a>
                         <a href="/delete/<%- courses._id %>" class="btn btn-warning">Delete</a>
                     </td>
                   </tr>
