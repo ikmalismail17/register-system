@@ -1,0 +1,47 @@
+<%- include("adminlayout.ejs") %> 
+<div class="container">
+    <div class="row text-center">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-horizontal" method="post" action="/updatecourse/">
+                    <input type="hidden" value="<%= edit._id %>" name="id">
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Course Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="coursename" id="name" value="<%= edit.name %>" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="cols-sm-2 control-label">Course Code</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="coursecode" id="email" value="<%= edit.code %>" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="cols-sm-2 control-label">Duration</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="duration" id="email" value="<%= edit.duration %>" />
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="form-group mt-2 ">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
