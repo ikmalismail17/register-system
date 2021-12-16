@@ -1,6 +1,8 @@
 const Course = require("../models/course");
 const Admin = require("../models/admin");
 const bcrypt = require("bcryptjs/dist/bcrypt");
+var mongoose = require("mongoose");
+const objectId = require("mongodb").ObjectId;
 
 const registerView = (req, res) => {
   Course.find({}, (err, data) => {
@@ -82,8 +84,34 @@ const registerAdmin = (req, res) => {
 
 const editCourse = (req, res) => {
   Course.findOne({ _id: req.params.id }, (err, data) => {
-    res.json();
+    res.render("updatecourse", {
+      edit: data,
+    });
   });
+};
+
+const updateCourse = (req, res) => {
+  const { id, coursename, coursecode, duration } = req.body;
+  if (!coursename || !coursecode || !duration) {
+    console.log("Fill the input");
+  }
+
+  Course.findOneAndUpdate(
+    { name: coursename },
+    {
+      name: req.body.coursename,
+      code: req.body.coursecode,
+      duration: req.body.duration,
+    },
+    { new: true },
+    (error, data) => {
+      if (error) {
+        console.log("Kosong");
+      } else {
+        res.redirect("/registercourse");
+      }
+    }
+  );
 };
 
 module.exports = {
@@ -93,4 +121,5 @@ module.exports = {
   registerAdmin,
   registerAd,
   editCourse,
+  updateCourse,
 };
