@@ -8,6 +8,7 @@ const {
   registerAdmin,
   registerAd,
   editCourse,
+  updateCourse,
 } = require("../controllers/adminPageController");
 
 //get
@@ -19,7 +20,6 @@ routerAdmin.get("/edit/:id", editCourse);
 //post
 routerAdmin.post("/registercourse", registerCourse);
 routerAdmin.post("/registeradmin", registerAd);
-
-//put
+routerAdmin.post("/updatecourse", updateCourse);
 
 module.exports = routerAdmin;

@@ -43,7 +43,14 @@
                     </div>
                     <div class="card-body">
                         <div class="card-body">
-                            <input type="text" disabled>
+                            <% courses.forEach((courses)=>{
+                               if(courses.name == courses.name){
+                            %>
+                             <input type="text" value="<%= courses.duration %>" disabled>
+                           <% 
+                               }
+                           }) 
+                           %>  
                         </div>
                     </div>
                 </div>

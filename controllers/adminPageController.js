@@ -92,26 +92,28 @@ const editCourse = (req, res) => {
 
 const updateCourse = (req, res) => {
   const { id, coursename, coursecode, duration } = req.body;
+  const ids = mongoose.Types.ObjectId(id);
   if (!coursename || !coursecode || !duration) {
     console.log("Fill the input");
-  }
-
-  Course.findOneAndUpdate(
-    { name: coursename },
-    {
-      name: req.body.coursename,
-      code: req.body.coursecode,
-      duration: req.body.duration,
-    },
-    { new: true },
-    (error, data) => {
-      if (error) {
-        console.log("Kosong");
-      } else {
-        res.redirect("/registercourse");
+    res.redirect("/registercourse");
+  } else {
+    Course.findOneAndUpdate(
+      { _id: ids },
+      {
+        name: coursename,
+        code: coursecode,
+        duration: duration,
+      },
+      { new: true },
+      (error, data) => {
+        if (error) {
+          console.log("Kosong");
+        } else {
+          res.redirect("/registercourse");
+        }
       }
-    }
-  );
+    );
+  }
 };
 
 module.exports = {
