@@ -64,10 +64,13 @@ const loginStudent = (req, res) => {
   //Required
   if (!email || !password) {
     console.log("Please fill in all the fields");
-    res.render("login", {
-      email,
-      password,
-    });
+    res.redirect(
+      {
+        email,
+        password,
+      },
+      "/login"
+    );
   } else {
     passport.authenticate("local", {
       successRedirect: "/dashboard",

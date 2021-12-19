@@ -1,5 +1,6 @@
 const Course = require("../models/course");
 const Admin = require("../models/admin");
+const Student = require("../models/student");
 const bcrypt = require("bcryptjs/dist/bcrypt");
 var mongoose = require("mongoose");
 const objectId = require("mongodb").ObjectId;
@@ -116,6 +117,18 @@ const updateCourse = (req, res) => {
   }
 };
 
+const deleteStudent = (req, res) => {
+  Student.findByIdAndDelete(req.params.id, (err, deleteRecord) => {
+    if (!err) {
+      console.log(deleteRecord);
+      res.redirect("/admindashboard");
+    } else {
+      console.log(err);
+      res.redirect("/admindashboard");
+    }
+  });
+};
+
 module.exports = {
   registerView,
   registerCourse,
@@ -124,4 +137,5 @@ module.exports = {
   registerAd,
   editCourse,
   updateCourse,
+  deleteStudent,
 };

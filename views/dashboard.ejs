@@ -2,10 +2,58 @@
 <div class="container">
     <div class="row text-center">
             <h3  style="font-size: 70px; font-weight: bold;">WELCOME</h3>
-            <h3 style="font-size: 50px;" class="text-uppercase font-monoscope"><strong><span style="color: blue;">User</span> </strong></h3> &nbsp;
+            <h3 style="font-size: 50px;" class="text-uppercase font-monoscope"><strong><span style="color: blue;">Student</span> </strong></h3> &nbsp;
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h4>Course Selected</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-success mt-4 text-center">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">V</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            var i=1;
+                            coursereg.forEach(function (course) { %>
+                      <tr>
+                        <th scope="row"><%- i %></th> 
+                        <td><%= course._id %></td>
+                        <td><%= course.name %></td>
+                        <td><%= course.code %></td>
+                        <td>
+                            <%= course.__v %>
+                        </td>
+                        <td>
+                            <a href="/deleteCourse/<%- course._id %>" onclick="return userConfirm()" class="btn btn-warning">Drop</a>
+                        </td>
+                      </tr>
+                      <% i++}) %>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
     </div>
 </div>
-
+<script>
+    function userConfirm() {
+      var x = confirm("Are you sure");
+      if (x == true){
+        return true;
+      }else{
+        return false;
+      }
+    }
+</script>
 </body>
 
 </html>

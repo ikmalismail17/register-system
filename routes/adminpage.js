@@ -9,6 +9,7 @@ const {
   registerAd,
   editCourse,
   updateCourse,
+  deleteStudent,
 } = require("../controllers/adminPageController");
 
 //get
@@ -16,6 +17,7 @@ routerAdmin.get("/registercourse", registerView);
 routerAdmin.get("/delete/:id", deleteCourse);
 routerAdmin.get("/registeradmin", registerAdmin);
 routerAdmin.get("/edit/:id", editCourse);
+routerAdmin.get("/deleteStudent/:id", deleteStudent);
 
 //post
 routerAdmin.post("/registercourse", registerCourse);

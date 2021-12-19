@@ -1,4 +1,4 @@
-<%- include('userlayout.ejs'); %> 
+<%- include('adminlayout.ejs'); %> 
 
 <div class="container">
     <div class="row justify-content-center">
@@ -67,7 +67,7 @@
                     <td><%= courses.duration %></td>
                     <td>
                         <a href="/edit/<%- courses._id %>" class="btn btn-warning">Edit</a>
-                        <a href="/delete/<%- courses._id %>" class="btn btn-warning">Delete</a>
+                        <a href="/delete/<%- courses._id %>" onclick="return userConfirm()" class="btn btn-warning">Delete</a>
                     </td>
                   </tr>
                   <% i++}) %>
@@ -76,6 +76,15 @@
         </div>
     </div>
 </div>
-
+<script>
+    function userConfirm() {
+      var x = confirm("Are you sure");
+      if (x == true){
+        return true;
+      }else{
+        return false;
+      }
+    }
+</script>
 </body>
 </html>

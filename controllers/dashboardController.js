@@ -1,12 +1,19 @@
+const CourseReg = require("../models/courseReg");
+const Student = require("../models/student");
+
 const dashboardView = (req, res) => {
-  res.render("dashboard", {
-    user: req.user,
+  CourseReg.find({}, (err, data) => {
+    res.render("dashboard", {
+      coursereg: data,
+    });
   });
 };
 
 const adminDashboard = (req, res) => {
-  res.render("admindashboard", {
-    admin: req.admin,
+  Student.find({}, (err, data) => {
+    res.render("admindashboard", {
+      students: data,
+    });
   });
 };
 
